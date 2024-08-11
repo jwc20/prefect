@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  prefect:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./flows:/app/flows
+    environment:
+      - PREFECT_SERVER_API_HOST=0.0.0.0
+    command: prefect server start
+
+volumes:
+  prefect-data:
