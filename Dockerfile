@@ -16,6 +16,13 @@ ENV PATH="/opt/venv/bin:$PATH"
 # Install Prefect in the virtual environment
 RUN pip install --no-cache-dir -U prefect
 
+# https://github.com/PrefectHQ/prefect/issues/2355
+RUN apt-get update && apt-get install -y postgresql libpq-dev postgresql-client postgresql-client-common
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
 # Copy your Prefect flows and any other necessary files
 COPY . /app
 
