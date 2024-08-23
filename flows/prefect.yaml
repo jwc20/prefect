@@ -20,21 +20,6 @@ pull:
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
-- name: tears-transfer-jobs-3
-  version:
-  tags: []
-  description:
-  entrypoint: transfer_job_listings.py:job_transfer_flow
-  parameters: {}
-  work_pool:
-    name: tears-cloud-workpool
-    work_queue_name:
-    job_variables: {}
-  schedules:
-  - cron: 25 19 * * *
-    timezone: UTC
-    day_or: true
-    active: true
 - name: tears-transfer-jobs-4
   version:
   tags: []
