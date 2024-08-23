@@ -1,6 +1,2 @@
-pprintpp
-requests
-beautifulsoup4
-pandas
+prefect
 psycopg2-binary
-sqlalchemy
