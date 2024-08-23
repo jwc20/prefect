@@ -7,10 +7,10 @@ name: flows
 prefect-version: 2.20.3
 
 # build section allows you to manage and build docker images
-build: null
+build:
 
 # push section allows you to manage if and how this project is uploaded to remote locations
-push: null
+push:
 
 # pull section allows you to provide instructions for cloning this project in remote locations
 pull:
@@ -21,17 +21,32 @@ pull:
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
 - name: tears-transfer-jobs-3
-  version: null
+  version:
   tags: []
-  description: null
+  description:
   entrypoint: transfer_job_listings.py:job_transfer_flow
   parameters: {}
   work_pool:
     name: tears-cloud-workpool
-    work_queue_name: null
+    work_queue_name:
     job_variables: {}
   schedules:
   - cron: 25 19 * * *
     timezone: UTC
+    day_or: true
+    active: true
+- name: tears-transfer-jobs-4
+  version:
+  tags: []
+  description:
+  entrypoint: transfer_job_listings.py:job_transfer_flow
+  parameters: {}
+  work_pool:
+    name: tears-transfer
+    work_queue_name:
+    job_variables: {}
+  schedules:
+  - cron: 1 20 * * *
+    timezone: Asia/Seoul
     day_or: true
     active: true
