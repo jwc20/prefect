@@ -48,6 +48,8 @@ def transfer_jobs(scraped_jobs, max_id):
         conn.commit()
 
 
+#TODO write a task to replace duplicate data from job_listings table based on job_title, job_link, and created_at
+
 @task
 def get_max_id():
     with db.connect() as conn:
