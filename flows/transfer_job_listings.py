@@ -41,6 +41,8 @@ def transfer_jobs(scraped_jobs, max_id):
                 updated_at=job.updated_at,
                 job_description_id=None,
                 company_id=None,
+                source=job.source,
+                scraped_from=job.scraped_from,
             )
             conn.execute(insert_stmt)
         conn.commit()
@@ -51,7 +53,7 @@ def get_max_id():
     with db.connect() as conn:
         result = conn.scalar(select(func.max(job_listings.c.id)))
         return result
-
+    
 
 @flow(name="job-transfer-flow", log_prints=True)
 def job_transfer_flow():
